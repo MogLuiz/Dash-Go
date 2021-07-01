@@ -25,7 +25,7 @@ export function Header() {
             
             <Logo />
 
-            <SearchBox />
+            { isWideVersion && <SearchBox /> }
        
             <Flex
               align="center"
