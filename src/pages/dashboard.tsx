@@ -76,7 +76,7 @@ export default function Dashboard() {
                       borderRadius={8}
                       pb="4"
                     >
-                        <Text fontSize="lg" mb="4">Taxa de abertura</Text>
+                        <Text fontSize="lg" mb="4">Inscritos da semana</Text>
                         <Chart options={options} series={series} type="area" heigth={160}/>
                     </Box>
 
