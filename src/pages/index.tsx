@@ -38,9 +38,13 @@ export default function SignIn() {
       >
         <Stack spacing="4">
 
-          <Input name="email" type="email" label="E-mail" {...register('name', { required: true })} />
+          <Input 
+            name="email" 
+            type="email" 
+            label="E-mail" 
+            {...register('name', { required: false })} />
 
-          <Input name="password" type="password" label="Senha" {...register('email', { required: true })} />
+          <Input name="password" type="password" label="Senha" {...register('email', { required: false })} />
 
         </Stack>
 
