@@ -55,7 +55,6 @@ export default function SignIn() {
             name="email" 
             type="email" 
             label="E-mail"
-            
             error={formState.errors.email}
             {...register("email")} 
           />
