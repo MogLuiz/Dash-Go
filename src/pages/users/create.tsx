@@ -30,6 +30,7 @@ export default function CreateUser() {
         resolver: yupResolver(createUserFormSchema)
     })
 
+     console.log("a")
     const handleCreateUser: SubmitHandler<CreateUserFormData> = async (values) => {
         await new Promise(resolve => setTimeout(resolve, 2000))
 
