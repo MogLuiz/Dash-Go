@@ -72,26 +72,30 @@ export default function UserList() {
                                     </Tr>
                                 </Thead>
                                 <Tbody>
-                                    <Tr>
-                                        <Td px={["4", "4", "6"]}>
-                                            <Checkbox colorScheme="pink"/>
-                                        </Td>
-                                        <Td>
-                                            <Box>
-                                                <Text fontWeight="bold">Luiz Henrique</Text>
-                                                <Text fontSize="small" color="gray.300">luizhjramos@outlook.com</Text>
-                                            </Box>
-                                        </Td>
-                                        { isWideVersion && <Td>09 de abril de 2000</Td>}
-                                        
-                                    </Tr>
+                                    { data.users.map(user => {
+                                        return (
+                                            <Tr key={user.id}>
+                                                <Td px={["4", "4", "6"]}>
+                                                    <Checkbox colorScheme="pink"/>
+                                                </Td>
+                                                <Td>
+                                                    <Box>
+                                                        <Text fontWeight="bold">{user.name}</Text>
+                                                        <Text fontSize="small" color="gray.300">{user.email}</Text>
+                                                    </Box>
+                                                </Td>
+                                                { isWideVersion && <Td>{user.created_at}</Td>}
+                                                
+                                            </Tr>
+                                        )
+                                    })}
                                 </Tbody>
                             </Table>
                             
 
                             <Pagination />
-                        </>  
-                    )
+                         </>  
+                        )
 
                     }
                     
