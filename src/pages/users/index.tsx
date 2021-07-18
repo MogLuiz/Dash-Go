@@ -1,7 +1,5 @@
 import { Box, Flex, Heading, Button, Icon, Table, Thead, Tr, Th, Checkbox, Tbody, Text, Td, useBreakpointValue, Spinner } from "@chakra-ui/react";
-import { database } from "faker/locale/zh_TW";
 import Link from "next/link";
-import { useEffect } from "react";
 import { RiAddLine } from "react-icons/ri";
 import { useQuery } from 'react-query'
 
@@ -11,7 +9,7 @@ import { Sidebar } from "../../components/Sidebar";
 
 export default function UserList() {
 
-    const { data, isLoading, error } = useQuery('users', async () => {
+    const { data, isLoading, isFetching , error } = useQuery('users', async () => {
 
         const response = await fetch('http://localhost:3000/api/users')
 
@@ -51,7 +49,11 @@ export default function UserList() {
 
                 <Box flex="1" bg="gray.800" borderRadius={8} p="8">
                     <Flex mb="8" justify="space-between" align="center">
-                        <Heading>Usuários</Heading>
+                        <Heading>
+                            Usuários
+
+                            { !isLoading && isFetching && <Spinner size="sm" color="gray.500" ml="4"/>}
+                        </Heading>
 
                         <Link href="/users/create" passHref>
                             <Button 
