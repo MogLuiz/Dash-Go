@@ -31,6 +31,8 @@ export default function UserList() {
         })
 
         return users
+    }, {
+        staleTime: 1000 * 5 // Durante 5 segundos não precisa ser recarregada
     })
 
 
