@@ -10,28 +10,7 @@ import { Sidebar } from "../../components/Sidebar";
 
 export default function UserList() {
 
-    const { data, isLoading, isFetching , error } = useQuery('users', async () => {
-
-        const { data } = await api.get('http://localhost:3000/api/users')
-
-
-        const users = data.users.map( user => {
-            return {
-                id: user.id,
-                name: user.name,
-                email: user.email,
-                created_at: new Date(user.created_at).toLocaleDateString('pt-BR', {
-                    day: '2-digit',
-                    month: 'long',
-                    year: 'numeric'
-                })
-            }
-        })
-
-        return users
-    }, {
-        staleTime: 1000 * 5 // Durante 5 segundos não precisa ser recarregada
-    })
+    const { data, isLoading, isFetching , error } = 
 
 
     const isWideVersion = useBreakpointValue ({
