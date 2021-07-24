@@ -1,4 +1,4 @@
-import { createServer, Factory, Model, Response } from 'miragejs'
+import { createServer, Factory, Model, Response, ActiveModelSerializer } from 'miragejs'
 import faker from 'faker'
 
 type User = {
@@ -9,6 +9,10 @@ type User = {
 
 export function makeServer() {
     const server = createServer({
+
+        serializers: {
+            application: ActiveModelSerializer, //Vai permitir fazer o cadastro de usuários e fazer os relacionamentos
+        },
 
         models: {
             user: Model.extend<Partial<User>>({})
@@ -38,17 +42,17 @@ export function makeServer() {
             this.namespace = "api"
             this.timing = 750 //Toda chamada que eu fizer para a API do Mirage vai demorar 750MS bom para testar o loading da APP
 
-            this.get("/users", function(schema, request) {
-                
+            this.get("/users", function (schema, request) {
+
                 const { page = 1, per_page = 10 } = request.queryParams
 
                 const total = schema.all('user').length
 
-                const pageStart = (Number(page) - 1 )
+                const pageStart = (Number(page) - 1)
                 const pageEnd = pageStart + Number(per_page)
 
                 const users = this.serialize(schema.all('user'))
-                              .users.slice(pageStart, pageEnd)
+                    .users.slice(pageStart, pageEnd)
 
                 return new Response(
                     200,
